@@ -25,6 +25,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/median")
+
 public class RunningMedianController {
 
     private final RunningMedianService runningMedianService;
