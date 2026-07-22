@@ -9,14 +9,29 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=for-the-badge&logo=tailwindcss)
 ![H2](https://img.shields.io/badge/H2_Database-blue?style=for-the-badge)
 ![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?style=for-the-badge&logo=swagger)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker)
+![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge&logo=render)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
 
 </p>
 
 <p align="center">
 
-A modern Full Stack application that demonstrates the **Running Median** algorithm using the **Two Heap Strategy (Max Heap + Min Heap)** with real-time visualization, interactive charts, heap visualization, execution flow, and REST APIs built using Spring Boot.
+A full-stack web application that visualizes the **Running Median** algorithm using the **Two Heap Strategy (Max Heap + Min Heap)**. The project provides real-time median calculation, heap visualization, execution tracking, statistical analysis, interactive charts, and REST APIs built with **Spring Boot** and a responsive frontend developed using **React**.
 
 </p>
+
+---
+
+# 🌐 Live Demo
+
+### 🚀 Frontend (Vercel)
+
+https://running-median-visualizer.vercel.app
+
+### 📚 Backend API (Swagger)
+
+https://runningmedian-backend.onrender.com/swagger-ui/index.html
 
 ---
 
@@ -60,23 +75,26 @@ A modern Full Stack application that demonstrates the **Running Median** algorit
 
 # ✨ Features
 
-### Backend
+## Backend
 
-- Running Median using Two Heap Algorithm
+- Running Median using the Two Heap Algorithm
 - O(log n) insertion
 - O(1) median retrieval
 - Spring Boot REST APIs
 - H2 Database
+- Spring Data JPA
 - Global Exception Handling
-- Validation
+- Bean Validation
 - Layered Architecture
 - OpenAPI / Swagger Documentation
+- Dockerized Backend
+- Cloud Deployment on Render
 
 ---
 
-### Frontend
+## Frontend
 
-- Beautiful Dashboard
+- Modern Dashboard UI
 - Live Statistics
 - Median Progress Chart
 - Heap Visualization
@@ -85,25 +103,26 @@ A modern Full Stack application that demonstrates the **Running Median** algorit
 - CSV Export
 - Reset Dataset
 - Responsive Design
-- Smooth Animations (Framer Motion)
+- Smooth Animations using Framer Motion
+- Cloud Deployment on Vercel
 
 ---
 
 # 🏗 Architecture
 
 ```
-                React + Vite
-                      │
-                      ▼
-             REST API (Spring Boot)
-                      │
-          -------------------------
-          │                       │
-          ▼                       ▼
- RunningMedianEngine       H2 Database
+                 React + Vite
+                       │
+                       ▼
+              REST API (Spring Boot)
+                       │
+          ---------------------------
+          │                         │
+          ▼                         ▼
+ RunningMedianEngine          H2 Database
  (Two Heap Algorithm)
           │
-    Max Heap + Min Heap
+   Max Heap + Min Heap
 ```
 
 ---
@@ -122,12 +141,12 @@ Stores the upper half of the numbers.
 
 After every insertion:
 
-1. Insert into the correct heap.
-2. Rebalance if necessary.
-3. Calculate the median.
-4. Update the chart and dashboard instantly.
+1. Insert into the appropriate heap.
+2. Rebalance the heaps if required.
+3. Calculate the current median.
+4. Update the dashboard, statistics, and chart instantly.
 
-### Complexity
+## Time Complexity
 
 | Operation | Complexity |
 |-----------|-----------:|
@@ -147,6 +166,7 @@ After every insertion:
 - H2 Database
 - Maven
 - Swagger / OpenAPI
+- Docker
 
 ## Frontend
 
@@ -159,6 +179,22 @@ After every insertion:
 - React Icons
 - React Hot Toast
 
+## Deployment
+
+- Render (Backend)
+- Vercel (Frontend)
+
+---
+
+# ☁ Deployment
+
+| Service | Platform |
+|----------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | H2 Database |
+| API Documentation | Swagger UI |
+
 ---
 
 # 📁 Project Structure
@@ -167,25 +203,21 @@ After every insertion:
 RunningMedianVisualizer
 │
 ├── backend
-│   ├── controller
-│   ├── service
-│   ├── repository
-│   ├── entity
-│   ├── dto
-│   ├── mapper
-│   ├── exception
-│   ├── response
-│   ├── config
-│   └── core
+│   ├── src
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── mvnw
 │
 ├── frontend
-│   ├── components
-│   ├── pages
-│   ├── services
-│   ├── utils
-│   └── assets
+│   ├── src
+│   ├── public
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── screenshots
+│
+├── docker-compose.yml
+│
 └── README.md
 ```
 
@@ -196,17 +228,39 @@ RunningMedianVisualizer
 | Method | Endpoint | Description |
 |---------|----------|-------------|
 | POST | `/api/v1/median/add` | Add Number |
-| GET | `/api/v1/median` | Current Median |
-| GET | `/api/v1/median/statistics` | Statistics |
-| GET | `/api/v1/median/chart` | Chart Data |
-| GET | `/api/v1/median/heaps` | Heap Visualization |
-| GET | `/api/v1/median/history` | History |
+| GET | `/api/v1/median` | Get Current Median |
+| GET | `/api/v1/median/statistics` | Get Statistics |
+| GET | `/api/v1/median/chart` | Get Chart Data |
+| GET | `/api/v1/median/heaps` | Get Heap Visualization |
+| GET | `/api/v1/median/history` | Get Number History |
 | DELETE | `/api/v1/median/reset` | Reset Dataset |
 
-Swagger UI
+## Swagger UI
+
+### Local
 
 ```
 http://localhost:8080/swagger-ui/index.html
+```
+
+### Production
+
+```
+https://runningmedian-backend.onrender.com/swagger-ui/index.html
+```
+
+---
+
+# 🐳 Docker
+
+Build and run the backend using Docker.
+
+```bash
+cd backend
+
+docker build -t runningmedian-backend .
+
+docker run -p 8080:8080 runningmedian-backend
 ```
 
 ---
@@ -219,7 +273,7 @@ http://localhost:8080/swagger-ui/index.html
 git clone https://github.com/Raghunath09/RunningMedianVisualizer.git
 ```
 
-```
+```bash
 cd RunningMedianVisualizer
 ```
 
@@ -227,8 +281,9 @@ cd RunningMedianVisualizer
 
 ## Backend
 
-```
+```bash
 cd backend
+
 mvn spring-boot:run
 ```
 
@@ -242,9 +297,11 @@ http://localhost:8080
 
 ## Frontend
 
-```
+```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
@@ -258,15 +315,15 @@ http://localhost:5173
 
 # 📦 Future Enhancements
 
-- Docker Support
-- Docker Compose
-- PostgreSQL Integration
-- User Authentication
+- PostgreSQL / MySQL Integration
+- User Authentication (JWT)
+- Redis Caching
+- Heap Animation
+- PDF Report Export
 - Dark / Light Theme
-- Deployment
 - Performance Analytics
+- CI/CD using GitHub Actions
 - Unit & Integration Test Coverage
-- CI/CD Pipeline
 
 ---
 
@@ -278,7 +335,6 @@ http://localhost:5173
 - LinkedIn: https://www.linkedin.com/in/raghunath-toparam/
 - Email: toparamraghunath@gmail.com
 
-
 ---
 
 # 📄 License
@@ -289,4 +345,4 @@ This project is licensed under the MIT License.
 
 ## ⭐ Support
 
-If you found this project useful, consider giving it a **⭐ Star** on GitHub.
+If you found this project helpful, consider giving it a **⭐ Star** on GitHub. It helps others discover the project and supports future improvements.
